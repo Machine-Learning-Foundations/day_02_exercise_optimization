@@ -16,7 +16,7 @@ The problem is illustrated below:
 ![parabola_task](./figures/parabola_task.png)
 
 
-- Next we consider a paraboloid, $\cdot$ denots the scalar product,
+- Next we consider a paraboloid, $\cdot$ denotes the scalar product,
 
 $$ \min_{\mathbf{x}} \mathbf{x} \cdot \mathbf{x},  \text{   with   } \mathbf{x_0} = (2.9, -2.9) .$$
 
@@ -27,7 +27,7 @@ Once more the problem is illustrated below:
 ![paraboloid_task](./figures/paraboloid_task.png)
 
 
-- Additionally we consider a bumpy paraboloid, $\cdot$ denots the scalar product,
+- Additionally we consider a bumpy paraboloid, $\cdot$ denotes the scalar product,
 
 $$ \min_{\mathbf{x}} \mathbf{x} \cdot \mathbf{x} + \cos(2  \pi x_0) + \sin(2 \pi x_1 ), \text{   with   } \mathbf{x_0} = (2.9, -2.9) .$$
 
