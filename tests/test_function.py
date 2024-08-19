@@ -5,6 +5,7 @@ Rule 1:
 "Difference Qutiones may sometimes be useful, too"
 Andreas Griewank, Andrea Walther - Evaluating Derivatives.
 """
+
 import sys
 from typing import Callable, Optional, Union
 

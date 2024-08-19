@@ -1,13 +1,13 @@
 """Implement 2d gradient descent using jax."""
 
-import jax
-import jax.numpy as np
-import numpy as nnp
+import numpy as np
+import torch as th
+from torch.func import grad
 
 from util import write_movie
 
 
-def bumpy_function(pos: np.ndarray) -> np.ndarray:
+def bumpy_function(pos: th.Tensor) -> th.Tensor:
     """Return values from an even bumpier function.
 
     This even bumpier function is hard to optimize.
@@ -22,10 +22,10 @@ def bumpy_function(pos: np.ndarray) -> np.ndarray:
     return (
         pos[0] * pos[0]
         + pos[1] * pos[1]
-        + np.cos(pos[0] * 2 * np.pi)
-        + np.sin(pos[1] * 2 * np.pi)
-        + (pos[0] > 0).astype(pos.dtype) * 0.5
-        + np.tanh(np.sqrt(pos[0] ** 2 + pos[1] ** 2)) * 10
+        + th.cos(pos[0] * 2 * th.pi)
+        + th.sin(pos[1] * 2 * th.pi)
+        + (pos[0] > 0).type(pos.dtype) * 0.5
+        + th.tanh(th.sqrt(pos[0] ** 2 + pos[1] ** 2)) * 10
     )
 
 
@@ -36,10 +36,10 @@ if __name__ == "__main__":
     # TODO: use jax to find the gradient.
 
     nx, ny = (1001, 1001)
-    x = np.linspace(-3, 3, nx)
-    y = np.linspace(-3, 3, ny)
-    mx, my = np.meshgrid(x, y)
-    pos = np.stack((mx, my))
+    x = th.linspace(-3, 3, nx)
+    y = th.linspace(-3, 3, ny)
+    mx, my = th.meshgrid(x, y)
+    pos = th.stack((mx, my))
     mz = bumpy_function(pos)
 
     fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     plt.contourf(mx, my, mz)
     plt.colorbar()
 
-    start_pos = np.array((2.9, -2.9))
+    start_pos = th.tensor((2.9, -2.9))
     step_size = 0.0  # TODO: Choose your step size.
     alpha = 0.0  # TODO: Choose your momentum term.
     step_total = 100
@@ -65,9 +65,9 @@ if __name__ == "__main__":
     plt.show()
 
     write_movie(
-        nnp.array(mx),
-        nnp.array(my),
-        nnp.array(mz),
+        np.array(mx),
+        np.array(my),
+        np.array(mz),
         pos_list,
         "writer_grad_bumpy_plot_jax",
     )

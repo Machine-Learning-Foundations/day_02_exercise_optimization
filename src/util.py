@@ -1,4 +1,5 @@
 """Code to export gradient descent sequences into a movie."""
+
 from typing import Optional
 
 import matplotlib.animation as manimation

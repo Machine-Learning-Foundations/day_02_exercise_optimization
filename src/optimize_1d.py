@@ -1,4 +1,5 @@
 """Implement gradient descent in 1d."""
+
 import matplotlib.pyplot as plt
 import numpy as np
 
