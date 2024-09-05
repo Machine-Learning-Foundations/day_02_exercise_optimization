@@ -33,7 +33,7 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
     from matplotlib import cm
 
-    # TODO: use jax to find the gradient.
+    # TODO: use torch to find the gradient.
 
     nx, ny = (1001, 1001)
     x = th.linspace(-3, 3, nx)
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     step_total = 100
 
     pos_list = [start_pos]
-    velocity_vec = np.array((0.0, 0.0))
+    velocity_vec = th.tensor((0.0, 0.0))
     # TODO: Implement gradient descent with momentum.
 
     for pos in pos_list:
@@ -69,5 +69,5 @@ if __name__ == "__main__":
         np.array(my),
         np.array(mz),
         pos_list,
-        "writer_grad_bumpy_plot_jax",
+        "writer_grad_bumpy_plot_torch",
     )
